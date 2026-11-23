@@ -1,0 +1,7 @@
+pyside6>=6.5
+numpy
+sympy
+matplotlib
+pytest
+# Opcional (solo para pruebas que comparan con scipy.optimize.brentq; si no está, se omiten):
+# scipy

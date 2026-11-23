@@ -1,0 +1,7 @@
+Guarda aquí las capturas de pantalla de la interfaz funcionando (mínimo 3), por ejemplo:
+
+  01_ejemplo_libro.png   -> ventana con el ejemplo del libro calculado
+  02_sensor_nivel.png    -> ventana con el caso del sensor de nivel (tabla y resultados)
+  03_graficas.png        -> una de las pestañas de gráficas
+
+Luego enlázalas en el README.md. (Windows: tecla Win + Shift + S.)

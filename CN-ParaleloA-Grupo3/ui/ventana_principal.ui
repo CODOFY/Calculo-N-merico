@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>820</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>960</width>
+    <height>620</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Serie de Taylor y error de truncamiento</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="layoutPrincipal">
+    <item>
+     <widget class="QWidget" name="panelEntradas" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>330</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="layoutPanelEntradas">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="grupoEntradas">
+         <property name="title">
+          <string>Datos de entrada</string>
+         </property>
+         <layout class="QGridLayout" name="layoutEntradas">
+          <item row="0" column="0">
+           <widget class="QLabel" name="lblEjemplo">
+            <property name="text">
+             <string>Ejemplo:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="comboEjemplos">
+            <property name="toolTip">
+             <string>Carga el ejemplo del libro o el caso de aplicación del grupo</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lblFuncion">
+            <property name="text">
+             <string>f(x) =</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="txtFuncion">
+            <property name="toolTip">
+             <string>Función en la variable x. Ej.: cos(x), exp(-x), 0.6*sqrt(x)</string>
+            </property>
+            <property name="text">
+             <string>cos(x)</string>
+            </property>
+            <property name="placeholderText">
+             <string>Ej.: cos(x)</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lblX0">
+            <property name="text">
+             <string>Punto base x₀:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="txtX0">
+            <property name="toolTip">
+             <string>Punto alrededor del cual se desarrolla la serie. Acepta pi/4, sqrt(2)...</string>
+            </property>
+            <property name="text">
+             <string>pi/4</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="lblX">
+            <property name="text">
+             <string>Punto a evaluar x:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="txtX">
+            <property name="toolTip">
+             <string>Punto donde se aproxima f. Acepta pi/3, 2.5...</string>
+            </property>
+            <property name="text">
+             <string>pi/3</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="lblOrden">
+            <property name="text">
+             <string>Orden máximo n (0–15):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QSpinBox" name="spinOrden">
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>15</number>
+            </property>
+            <property name="value">
+             <number>6</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="lblCifras">
+            <property name="text">
+             <string>Cifras significativas s:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QSpinBox" name="spinCifras">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>12</number>
+            </property>
+            <property name="value">
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="lblEs">
+            <property name="text">
+             <string>Tolerancia de Scarborough:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLabel" name="lblEsValor">
+            <property name="text">
+             <string>εs = 0.05 %</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="grupoTruncamiento">
+         <property name="title">
+          <string>Estudio del truncamiento (orden fijo)</string>
+         </property>
+         <layout class="QGridLayout" name="layoutTruncamiento">
+          <item row="0" column="0">
+           <widget class="QLabel" name="lblOrdenEstudio">
+            <property name="text">
+             <string>Orden fijo n:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QSpinBox" name="spinOrdenEstudio">
+            <property name="toolTip">
+             <string>Orden del polinomio para la gráfica log-log y para el límite de error</string>
+            </property>
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>15</number>
+            </property>
+            <property name="value">
+             <number>2</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="lblHMax">
+            <property name="text">
+             <string>h máximo (|x − x₀|):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QDoubleSpinBox" name="spinHMax">
+            <property name="decimals">
+             <number>4</number>
+            </property>
+            <property name="minimum">
+             <double>0.001000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1000.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="value">
+             <double>0.500000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="lblTolLimite">
+            <property name="text">
+             <string>Error permitido (%):</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDoubleSpinBox" name="spinTolLimite">
+            <property name="toolTip">
+             <string>Se calcula hasta qué h el polinomio de orden n tiene |εt| menor que este valor</string>
+            </property>
+            <property name="decimals">
+             <number>3</number>
+            </property>
+            <property name="minimum">
+             <double>0.001000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>100.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.500000000000000</double>
+            </property>
+            <property name="value">
+             <double>1.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layoutBotones">
+         <item>
+          <widget class="QPushButton" name="btnCalcular">
+           <property name="text">
+            <string>Calcular</string>
+           </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnLimpiar">
+           <property name="text">
+            <string>Limpiar</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="btnExportar">
+           <property name="text">
+            <string>Exportar CSV</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="espaciadorVertical">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="panelDerecho" native="true">
+      <layout class="QVBoxLayout" name="layoutDerecho">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTabWidget" name="tabsPrincipal">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tabTabla">
+          <attribute name="title">
+           <string>Tabla</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="layoutTabTabla">
+           <item>
+            <widget class="QTableWidget" name="tablaResultados"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabAproximacion">
+          <attribute name="title">
+           <string>f(x) y Pₙ(x)</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="layoutTabAproximacion">
+           <item>
+            <widget class="QWidget" name="widgetGrafica" native="true"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabError">
+          <attribute name="title">
+           <string>Error vs n</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="layoutTabError">
+           <item>
+            <widget class="QWidget" name="widgetGraficaError" native="true"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabTruncamiento">
+          <attribute name="title">
+           <string>Truncamiento (log-log)</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="layoutTabTruncamiento">
+           <item>
+            <widget class="QWidget" name="widgetGraficaTrunc" native="true"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabTeoria">
+          <attribute name="title">
+           <string>Teoría del error</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="layoutTabTeoria">
+           <item>
+            <widget class="QTextBrowser" name="txtTeoria"/>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabAcerca">
+          <attribute name="title">
+           <string>Acerca de</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="layoutTabAcerca">
+           <item>
+            <widget class="QTextBrowser" name="txtAcerca"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="grupoResultados">
+         <property name="title">
+          <string>Resultados</string>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>190</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="layoutResultados">
+          <item>
+           <widget class="QTextEdit" name="txtResultados">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

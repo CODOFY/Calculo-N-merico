@@ -1,0 +1,31 @@
+INSTRUCCIONES PARA EJECUTAR EL PROGRAMA
+Serie de Taylor y error de truncamiento - Grupo 3, Paralelo A
+Requisitos: tener Python 3.10 o superior instalado (con la opción "Add Python to PATH")
+y conexión a internet para instalar los paquetes.
+
+1. Descargar el archivo, ponerlo en una carpeta y descomprimir el zip.
+
+2. Abrir la carpeta CN-ParaleloB-Grupo3 (la que contiene main.py), hacer clic en la
+   barra de direcciones del explorador, escribir "cmd" y presionar Enter.
+
+3. En la ventana negra que se abre, escribir estos comandos uno por uno
+   (Enter después de cada uno):
+
+   python -m venv .venv
+   .venv\Scripts\activate
+   pip install -r requirements.txt
+   python tools/generar_ui.py
+
+4. Para correr el programa:
+
+   python main.py
+
+5. (Opcional) Para correr las pruebas:
+
+   pytest -v
+
+Para volver a abrir el programa otro día no hace falta reinstalar: abrir "cmd" en la
+misma carpeta y ejecutar:
+
+   .venv\Scripts\activate
+   python main.py
